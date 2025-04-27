@@ -14,16 +14,26 @@ connectDB();
 const app = express();
 const PORT = process.env.PORT || 8080;
 
+const allowedOrigins = [
+  "https://pwclone-2vv1-maginoiei-adityas-projects-a6dac2d1.vercel.app",
+   // for your local development
+];
+
 // ⚡ Handle webhook raw body FIRST
 app.use("/api/v1/purchase/webhook", express.raw({ type: "application/json" }));
 
 // ⚡ Other middleware AFTER webhook
 app.use(express.json());
 app.use(cookieParser());
+
+
+
 app.use(cors({
-  origin: ["http://localhost:5173", "http://172.16.1.162:5173"],
-  credentials: true,
+  origin: allowedOrigins,
+  credentials: true, // if you are using cookies/auth tokens
 }));
+
+
 
 // ✅ API Routes
 app.use("/api/v1/user", userRoute);
