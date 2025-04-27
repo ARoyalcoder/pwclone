@@ -16,24 +16,21 @@ const PORT = process.env.PORT || 8080;
 
 const allowedOrigins = [
   "https://pwclone-2vv1-maginoiei-adityas-projects-a6dac2d1.vercel.app",
-   // for your local development
+  "http://localhost:5173",
 ];
 
-// ⚡ Handle webhook raw body FIRST
+// ⚡ Handle webhook raw body FIRST (must be BEFORE express.json())
 app.use("/api/v1/purchase/webhook", express.raw({ type: "application/json" }));
 
-// ⚡ Other middleware AFTER webhook
-app.use(express.json());
-app.use(cookieParser());
-
-
-
+// ⚡ Apply CORS middleware BEFORE other middlewares
 app.use(cors({
   origin: allowedOrigins,
-  credentials: true, // if you are using cookies/auth tokens
+  credentials: true,
 }));
 
-
+// ✅ Then other middlewares
+app.use(express.json());
+app.use(cookieParser());
 
 // ✅ API Routes
 app.use("/api/v1/user", userRoute);
@@ -42,6 +39,7 @@ app.use("/api/v1/media", mediaRoute);
 app.use("/api/v1/progress", courseProgressRoute);
 app.use("/api/v1/purchase", purchaseRoute);
 
+// ✅ Start server
 app.listen(PORT, () => {
   console.log(`✅ Server is running on port ${PORT}`);
 });
