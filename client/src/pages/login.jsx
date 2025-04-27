@@ -220,7 +220,7 @@ import PasswordInput from "./PasswordInput";
 import PhoneInput from "./PhoneInput";
 
 const Login = () => {
-  const [signupInput, setSignupInput] = useState({ name: "", email: "", password: "" , phone:"" });
+  const [signupInput, setSignupInput] = useState({ name: "", email: "", password: "", phone: "" });
   const [loginInput, setLoginInput] = useState({ email: "", password: "" });
   const [emailError, setEmailError] = useState("");
 
@@ -252,44 +252,98 @@ const Login = () => {
   };
 
   const handleRegistration = async (type) => {
+    console.log("handleRegistration called with type:", type);  // Debugging log
+  
     const inputData = type === "signup" ? signupInput : loginInput;
-
+  
+    // Validation for signup email
     if (type === "signup" && !isValidEmail(signupInput.email)) {
       setEmailError("Invalid email address.");
       return;
     }
-
+  
     const action = type === "signup" ? registerUser : loginUser;
-    await action(inputData);
+  
+    // Log input data and action type for debugging
+    console.log("Input data for", type, ":", inputData);
+  
+    try {
+      const response = await action(inputData);
+      console.log("Action response:", response); // Log response after action is called
+    } catch (error) {
+      console.error("Action failed with error:", error); // Log any errors
+    }
   };
+  
+
+  // useEffect(() => {
+  //   if (registerIsSuccess && registerData) {
+  //     toast.success(registerData.message || "Signup Successful.");
+  //     navigate("/"); // 
+  //   }
+
+  //   if (registerError) {
+  //     toast.error(registerError.data?.message || "Signup failed!");
+  //   }
+
+  //   if (loginIsSuccess && loginData) {
+  //     toast.success(loginData.message || "Login Successful.");
+  //     navigate("/");
+  //   }
+
+  //   if (loginError) {
+  //     toast.error(loginError.data?.message || "Login failed!");
+  //   }
+  // }, [
+  //   loginIsSuccess,
+  //   registerIsSuccess,
+  //   loginError,
+  //   registerError,
+  //   loginData,
+  //   registerData,
+  //   navigate,
+  // ]);
+
 
   useEffect(() => {
     if (registerIsSuccess && registerData) {
-      toast.success(registerData.message || "Signup Successful.");
-      navigate("/"); // 
+      toast.success(registerData.message || "Signup successful. Please Login.");
     }
-
+  
     if (registerError) {
-      toast.error(registerError.data?.message || "Signup failed!");
+      // Log the error for debugging
+      console.error("Register Error:", registerError);
+  
+      // Ensure registerError exists and has the necessary structure
+      const errorMessage = registerError?.data?.message || "Signup Failed";
+      toast.error(errorMessage);
     }
-
+  
     if (loginIsSuccess && loginData) {
-      toast.success(loginData.message || "Login Successful.");
-      navigate("/");
+      toast.success(loginData.message || "Login successful.");
+      navigate("/");  // Navigate to home after successful login
     }
-
+  
     if (loginError) {
-      toast.error(loginError.data?.message || "Login failed!");
+      // Log the error for debugging
+      console.error("Login Error:", loginError);
+  
+      // Ensure loginError exists and has the necessary structure
+      const errorMessage = loginError?.data?.message || "Login Failed";
+      toast.error(errorMessage);
     }
   }, [
-    loginIsSuccess,
-    registerIsSuccess,
-    loginError,
-    registerError,
+    loginIsLoading,
+    registerIsLoading,
     loginData,
     registerData,
+    loginError,
+    registerError,
     navigate,
   ]);
+  
+
+
 
   return (
     <div className="flex items-center w-full justify-center mt-20">

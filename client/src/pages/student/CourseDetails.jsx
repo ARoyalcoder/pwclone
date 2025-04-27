@@ -47,7 +47,7 @@ const CourseDetail = () => {
                     <p className='text-base md:text-lg'>Course Sub-title</p>
                     <p>
                         Created By{""}
-                        <span className='text-[#C0C4FC] underline italic '>{course?.creator.name}</span>
+                        <span className='text-[#C0C4FC] underline italic '>{course?.creator?.name}</span>
                     </p>
                     <div className='flex items-center gap-2 text-sm'>
                         <BadgeInfo size={16} />
