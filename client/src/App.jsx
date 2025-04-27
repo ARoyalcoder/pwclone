@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom"
 import Navbar from "./components/navbar"
 import Login from "./pages/login"
-import HeroSection from "./pages/student/heroSection"
+import HeroSection from "./pages/student/HeroSection"
 import MainLayout from "./layout/MainLayout"
 import { RouterProvider } from "react-router-dom"
 import Courses from "./pages/student/Courses"
