@@ -63,8 +63,8 @@ const PORT = process.env.PORT || 8080;
 
 // 🛡 Allowed frontend URLs (Vercel + Localhost)
 const allowedOrigins = [
-  "https://pwclone-2vv1.vercel.app/",
-  "http://localhost:5173",
+  "https://pwclone-kappa.vercel.app/",
+  "http://0.0.0.0:5173",
 ];
 
 // ⚡ Handle Webhook (raw body parsing FIRST)
