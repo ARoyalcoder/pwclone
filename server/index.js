@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 8080;
 
 // 🛡 Allowed frontend URLs (Vercel + Localhost)
 const allowedOrigins = [
-  "https://pwclone-kappa.vercel.app",
+  "https://pwclone-nine.vercel.app/",
   "http://172.16.1.162:5173",
   "https://pwclone.onrender.com",
     // No trailing slash here

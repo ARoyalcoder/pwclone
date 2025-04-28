@@ -45,11 +45,11 @@ export const createCheckoutSession = async (req, res) => {
 
         // Set URLs based on environment
         const successUrl = process.env.NODE_ENV === 'production'
-        ? `https://pwclone-kappa.vercel.app/course-progress/${courseId}`
+        ? `https://pwclone-nine.vercel.app/course-progress/${courseId}`
         : `http://localhost:5173/course-progress/${courseId}`;
     
     const cancelUrl = process.env.NODE_ENV === 'production'
-        ? `https://pwclone-kappa.vercel.app/course-detail/${courseId}`
+        ? `https://pwclone-nine.vercel.app/course-detail/${courseId}`
         : `http://localhost:5173/course-detail/${courseId}`;
     
         return res.status(200).json({
