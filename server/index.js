@@ -18,6 +18,7 @@ const PORT = process.env.PORT || 8080;
 const allowedOrigins = [
   "https://pwclone-kappa.vercel.app",
   "http://172.16.1.162:5173",
+  "https://pwclone.onrender.com",
     // No trailing slash here
 ];
 
