@@ -8,9 +8,8 @@ import { useGetPublishedCourseQuery } from "@/features/api/courseApi";
 
 const Courses = () => {
 
-    const {data , isLoading:publishedLoading , isError,isSuccess } = useGetPublishedCourseQuery();
+    const {data , isLoading , isError } = useGetPublishedCourseQuery();
 
-    const isLoading = false ; 
     
 
     if(isError){
