@@ -15,9 +15,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 
-const allowedOrigins = [
-  "http://localhost:5173", // local
-  "http://172.16.1.133:5173", // network
+const allowedOrigins = [// network
   "https://pwclone-nine.vercel.app", // vercel prod
 ];
 
