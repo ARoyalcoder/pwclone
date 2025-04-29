@@ -14,38 +14,26 @@ connectDB();
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-// 🛡 Allowed frontend URLs (Vercel + Localhost)
-const allowedOrigins = [
-  "https://resonant-alfajores-1ddb5e.netlify.app",
-  "http://172.16.1.162:5173",
-  // "https://pwclone.onrender.com",
 
-    // No trailing slash here
+const allowedOrigins = [
+  "http://localhost:5173", // local
+  "http://172.16.1.133:5173", // network
+  "https://pwclone-nine.vercel.app", // vercel prod
 ];
 
-// ⚡ Handle Webhook (raw body parsing FIRST)
+// ⚡ Handle webhook raw body FIRST
 app.use("/api/v1/purchase/webhook", express.raw({ type: "application/json" }));
 
-// ⚡ Setup CORS middleware
-// app.use(cors({
-//   origin: function (origin, callback) {
-//     if (!origin || allowedOrigins.includes(origin)) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error("Not allowed by CORS"));
-//     }
-//   },
-//   credentials: true, // allow cookies and credentials
-// }));
-
-
+// ✅ CORS middleware
 app.use(cors({
-  origin:allowedOrigins,
-  credentials:true
+  origin: allowedOrigins,
+  credentials: true,
 }));
+
 // ✅ Other middleware
 app.use(express.json());
 app.use(cookieParser());
+
 
 // ✅ API Routes
 app.use("/api/v1/user", userRoute);
