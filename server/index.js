@@ -16,9 +16,10 @@ const PORT = process.env.PORT || 8080;
 
 // 🛡 Allowed frontend URLs (Vercel + Localhost)
 const allowedOrigins = [
-  "https://pwclone-nine.vercel.app/",
-  "http://172.16.1.162:5173",
-  "https://pwclone.onrender.com",
+  // "https://pwclone-nine.vercel.app/",
+  // "http://172.16.1.162:5173",
+  // "https://pwclone.onrender.com",
+
     // No trailing slash here
 ];
 
@@ -26,17 +27,22 @@ const allowedOrigins = [
 app.use("/api/v1/purchase/webhook", express.raw({ type: "application/json" }));
 
 // ⚡ Setup CORS middleware
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true, // allow cookies and credentials
-}));
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error("Not allowed by CORS"));
+//     }
+//   },
+//   credentials: true, // allow cookies and credentials
+// }));
 
+
+app.use(cors({
+  origin:"http://localhost:5173",
+  credentials:true
+}));
 // ✅ Other middleware
 app.use(express.json());
 app.use(cookieParser());

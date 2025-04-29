@@ -222,7 +222,7 @@ export const getCourseDetailsWithPurchaseStatus = async (req, res) => {
         const userId = req.id;
         let { courseId } = req.params;
 
-        console.log("Raw courseId from params:", courseId);
+        // console.log("Raw courseId from params:", courseId);
 
         // Remove any leading colon or invalid characters
         courseId = courseId.replace(/[^a-fA-F0-9]/g, "");

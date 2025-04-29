@@ -90,7 +90,7 @@ const LectureTab = () => {
 
 
     const editLectureHandler = async () => {
-        console.log({ lectureTitle, uploadVideoInfo, isFree, courseId, lectureId });
+        // console.log({ lectureTitle, uploadVideoInfo, isFree, courseId, lectureId });
 
         await editLecture({
             lectureTitle,

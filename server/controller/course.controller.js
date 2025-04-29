@@ -80,7 +80,7 @@ export const editCourse = async (req, res) => {
         const updateData = { courseTitle, subTitle, description, category, courseLevel, coursePrice, courseThumbnail: courseThumbnail?.secure_url };
 
         course = await Course.findByIdAndUpdate(courseId, updateData, { new: true });
-        console.log(course);
+        // console.log(course);
         return res.status(200).json({
             course,
             message: "Course updated successfully."
@@ -99,7 +99,7 @@ export const getCourseById = async (req, res) => {
     try {
         const { courseId } = req.params;
         const course = await Course.findById(courseId);
-        console.log(course);
+        // console.log(course);
         if (!course) {
             return res.status(404).json({
                 message: "Course not found!",
@@ -170,7 +170,7 @@ export const createLecture = async (req, res) => {
 export const searchCourse = async (req,res) => {
     try {
         const {query = "", categories = [], sortByPrice =""} = req.query;
-        console.log(categories);
+        // console.log(categories);
         
         // create search query
         const searchCriteria = {
@@ -359,7 +359,7 @@ export const getLectureById = async (req, res) => {
         const { lectureId } = req.params;
         const lecture = await Lecture.findById(lectureId);
 
-        console.log(lecture);
+        // console.log(lecture);
         if (!lecture) {
             return res.status(404).json({
                 message: "Lecture not found ",

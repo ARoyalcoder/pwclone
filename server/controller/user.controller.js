@@ -76,7 +76,7 @@ export const login = async (req, res) => {
 
 
         const user = await User.findOne({ email });
-        console.log(user);
+        // console.log(user);
 
         // if user email is not present in database show error 
 

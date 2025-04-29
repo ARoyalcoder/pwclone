@@ -1,16 +1,31 @@
 import Plyr from "plyr-react";
 import "plyr-react/plyr.css";
+import { useEffect, useState } from "react";
 
 const VideoPlayer = ({ currentLecture, initialLecture, handleLectureProgress }) => {
+  const [progressMarked, setProgressMarked] = useState(false);
+
   const source = {
     type: "video",
     sources: [
       {
         src: currentLecture?.videoUrl || initialLecture?.videoUrl,
-        type: "video/mp4", // or change based on your video type
+        type: "video/mp4",
       },
     ],
   };
+
+  const handlePlay = () => {
+    if (!progressMarked) {
+      handleLectureProgress(currentLecture?._id || initialLecture._id);
+      setProgressMarked(true);
+    }
+  };
+
+  // Reset progressMarked when lecture changes
+  useEffect(() => {
+    setProgressMarked(false);
+  }, [currentLecture?._id, initialLecture?._id]);
 
   return (
     <div className="w-full h-auto md:rounded-lg overflow-hidden">
@@ -22,9 +37,8 @@ const VideoPlayer = ({ currentLecture, initialLecture, handleLectureProgress }) 
             "progress", "current-time", "mute", "volume", 
             "settings", "fullscreen",
           ],
-          // you can customize settings like speed, quality, captions etc.
         }}
-        onPlay={() => handleLectureProgress(currentLecture?._id || initialLecture._id)}
+        onPlay={handlePlay}
       />
     </div>
   );
