@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 8080;
 
 
 const allowedOrigins = [// network
-  "https://pwclone-nine.vercel.app", // vercel prod
+  "https://profound-kheer-e34d15.netlify.app", // vercel prod
 ];
 
 // ⚡ Handle webhook raw body FIRST
