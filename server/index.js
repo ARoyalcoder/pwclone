@@ -17,6 +17,7 @@ const PORT = process.env.PORT || 8080;
 
 const allowedOrigins = [// network
   "https://pwclones.netlify.app", // vercel prod
+  // "http://localhost:5173"
 ];
 
 // ⚡ Handle webhook raw body FIRST

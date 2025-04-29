@@ -169,7 +169,7 @@ const Profile = () => {
   const { user } = data;
 
   return (
-    <div className='max-w-4xl mx-auto px-4 my-24'>
+    <div className='max-w-4xl mx-auto px-4 my-14'>
       <h1 className='font-bold text-2xl text-center md:text-left '>PROFILE</h1>
       <div className='flex flex-col md:flex-row items-center md:items-start'>
         <div className='flex flex-col items-center'>
@@ -208,7 +208,7 @@ const Profile = () => {
 
       <div>
         <h1 className='font-medium text-lg'>Courses you're enrolled in</h1>
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 my-5'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 my-5'>
           {user.enrolledCourses.length === 0 ? (
             <h1>You haven't enrolled in any courses yet.</h1>
           ) : (

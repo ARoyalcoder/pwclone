@@ -154,7 +154,7 @@ const CourseDetail = () => {
   const { course, purchased } = data;
 
   return (
-    <div className="mt-20 space-y-5 mt-0">
+    <div className=" space-y-5 mt-0">
       {/* Top Section */}
       <div className="bg-[#2D2F31] text-white">
         <div className="max-w-7xl mx-auto py-8 px-4 md:px-8 space-y-3">
