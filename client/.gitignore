@@ -28,3 +28,4 @@ dist-ssr
 
 # Ignore build files
 dist/* text eol=lf
+* text=auto eol=lf
