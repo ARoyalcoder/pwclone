@@ -16,8 +16,8 @@ const PORT = process.env.PORT || 8080;
 
 // 🛡 Allowed frontend URLs (Vercel + Localhost)
 const allowedOrigins = [
-  // "https://pwclone-nine.vercel.app/",
-  // "http://172.16.1.162:5173",
+  "https://resonant-alfajores-1ddb5e.netlify.app",
+  "http://172.16.1.162:5173",
   // "https://pwclone.onrender.com",
 
     // No trailing slash here
@@ -40,7 +40,7 @@ app.use("/api/v1/purchase/webhook", express.raw({ type: "application/json" }));
 
 
 app.use(cors({
-  origin:"http://localhost:5173",
+  origin:allowedOrigins,
   credentials:true
 }));
 // ✅ Other middleware

@@ -12,4 +12,19 @@ dist
 dist-ssr
 *.local
 
- 
+ # Use LF line endings in all environments
+* text=auto eol=lf
+
+# Explicitly specify LF for common frontend files
+*.js text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.jsx text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.html text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+
+# Ignore build files
+dist/* text eol=lf
